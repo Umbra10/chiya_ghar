@@ -1,0 +1,77 @@
+/* Chiya Ghar - shared stylesheet (linked from every page) */
+:root{
+  --ink:#1d2b2a; --leaf:#3f6b4f; --leaf-dark:#2c4d38; --marigold:#e8a317;
+  --mist:#eef2ea; --white:#fff; --muted:#52615e;
+  --head:"Bricolage Grotesque",system-ui,sans-serif;
+  --body:"Source Serif 4",Georgia,serif;
+  --max:1100px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--body);font-size:1.0625rem;line-height:1.7;color:var(--ink);background:var(--white);min-height:100vh;display:flex;flex-direction:column}
+main{flex:1}
+h1,h2,h3{font-family:var(--head);line-height:1.15;margin:0 0 .6em}
+h1{font-size:clamp(2.2rem,6vw,4rem);letter-spacing:-.02em}
+h2{font-size:clamp(1.5rem,3.5vw,2.1rem)}
+p{margin:0 0 1em;max-width:68ch}
+.justify{text-align:justify;hyphens:auto}
+a{color:var(--leaf-dark)}
+:focus-visible{outline:3px solid var(--marigold);outline-offset:2px}
+.wrap{width:min(100% - 2.5rem,var(--max));margin-inline:auto}
+
+/* Navigation (Flexbox) */
+.site-header{background:var(--ink);position:sticky;top:0;z-index:10}
+.nav{display:flex;align-items:center;justify-content:space-between;min-height:64px}
+.brand{font-family:var(--head);font-weight:800;font-size:1.25rem;color:var(--white);text-decoration:none;display:flex;align-items:center;gap:.5rem}
+.brand i{color:var(--marigold)}
+.nav-links{display:flex;gap:.25rem;list-style:none;margin:0;padding:0}
+.nav-links a{display:flex;align-items:center;gap:.5rem;padding:.55rem .9rem;border-radius:6px;color:#d9e4dc;text-decoration:none;font-family:var(--head);font-weight:600;font-size:.98rem}
+.nav-links a:hover{background:rgba(255,255,255,.1);color:var(--white)}
+.nav-links a[aria-current="page"]{background:var(--marigold);color:var(--ink)}
+.menu-btn{display:none;background:none;border:1px solid #4d605b;color:var(--white);font-size:1.2rem;padding:.4rem .7rem;border-radius:6px;cursor:pointer}
+
+/* Home hero (Grid) */
+.hero{background:var(--mist);padding:4rem 0}
+.hero .wrap{display:grid;grid-template-columns:1.3fr 1fr;gap:3rem;align-items:center}
+.hero-card{background:var(--leaf);color:var(--white);padding:2rem;border-radius:4px;border-left:10px solid var(--marigold)}
+.hero-card h2{color:var(--marigold)}
+.hero-card ul{padding:0;margin:0;list-style:none}
+.hero-card li{display:flex;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.25);padding:.5rem 0}
+.btn{display:inline-block;background:var(--ink);color:var(--white);padding:.75rem 1.4rem;border-radius:6px;text-decoration:none;font-family:var(--head);font-weight:700;border:0;cursor:pointer;font-size:1rem}
+.btn:hover{background:var(--leaf-dark)}
+
+.section{padding:3.5rem 0}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.item{border-top:4px solid var(--leaf);padding-top:1rem}
+.item i{color:var(--marigold);font-size:1.5rem;margin-bottom:.5rem}
+
+/* About */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+.timeline{list-style:none;padding:0;margin:0;border-left:3px solid var(--marigold)}
+.timeline li{padding:0 0 1.2rem 1.2rem}
+.timeline strong{font-family:var(--head)}
+
+/* Contact */
+.contact-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:3rem}
+form{display:grid;gap:1rem}
+label{font-family:var(--head);font-weight:600;display:block;margin-bottom:.25rem}
+input,textarea{width:100%;font:inherit;padding:.65rem .8rem;border:2px solid #b8c6bd;border-radius:6px;background:var(--white)}
+input:focus,textarea:focus{border-color:var(--leaf);outline:none}
+.error{color:#a12a1d;font-size:.9rem;min-height:1.2em;margin:.2rem 0 0}
+.status{padding:.8rem 1rem;border-radius:6px;background:var(--mist);border-left:6px solid var(--leaf);display:none}
+.status.show{display:block}
+.info{list-style:none;padding:0;margin:0}
+.info li{display:flex;gap:.8rem;align-items:flex-start;margin-bottom:1rem}
+.info i{color:var(--leaf);margin-top:.35rem;width:1.2rem;text-align:center}
+
+.site-footer{background:var(--ink);color:#b9c8c1;padding:1.5rem 0;font-size:.95rem}
+.site-footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+
+@media (max-width:760px){
+  .menu-btn{display:block}
+  .nav{flex-wrap:wrap}
+  .nav-links{display:none;flex-direction:column;width:100%;padding-bottom:.8rem}
+  .nav-links.open{display:flex}
+  .hero .wrap,.two-col,.contact-grid,.grid-3{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
